@@ -22,11 +22,11 @@ class EmployeeServiceImplTest {
     @BeforeEach
     void setUp() {
         employeeService = new EmployeeServiceImpl();
+        assertEquals(0, employeeService.getAll().size());
     }
 
     @Test
     void add() {
-        assertEquals(0, employeeService.getAll().size());
         employeeService.add(EMP);
         assertEquals(1, employeeService.getAll().size());
         assertEquals(EMP, employeeService.getAll().get(0));
@@ -56,7 +56,6 @@ class EmployeeServiceImplTest {
 
     @Test
     void TestEmployeeAlreadyAddedException() {
-        assertEquals(0, employeeService.getAll().size());
         employeeService.add(EMP);
         EmployeeAlreadyAddedException e = assertThrows(
                 EmployeeAlreadyAddedException.class,
@@ -67,7 +66,6 @@ class EmployeeServiceImplTest {
 
     @Test
     void TestEmployeeNameIncorrectException() {
-        assertEquals(0, employeeService.getAll().size());
         employeeService.add(EMP);
         EmployeeNameIncorrectException e = assertThrows(
                 EmployeeNameIncorrectException.class,
@@ -78,7 +76,6 @@ class EmployeeServiceImplTest {
 
     @Test
     void TestEmployeeNotFoundException() {
-        assertEquals(0, employeeService.getAll().size());
         employeeService.add(EMP);
         EmployeeNotFoundException e = assertThrows(
                 EmployeeNotFoundException.class,
@@ -89,7 +86,6 @@ class EmployeeServiceImplTest {
 
     @Test
     void TestEmployeeStorageIsFullException() {
-        assertEquals(0, employeeService.getAll().size());
         employeeService.add(EMP);
         employeeService.add(new Employee("Evgeniy","Smirnov"));
         employeeService.add(new Employee("Svetlana","Kostrova"));
