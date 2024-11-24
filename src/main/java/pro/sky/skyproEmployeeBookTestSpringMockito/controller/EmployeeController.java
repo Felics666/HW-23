@@ -23,7 +23,7 @@ public class EmployeeController {
         return employeeService.add(employee);
     }
 
-    @GetMapping(path = "/remove")
+    @DeleteMapping (path = "/remove")
     public Employee removeEmployee(@RequestParam("firstName") String firstName,
                                    @RequestParam("lastName") String lastName) {
         return employeeService.remove(firstName, lastName);
