@@ -20,20 +20,27 @@ class EmployeeServiceImplTest {
 
     @BeforeEach
     void setUp() {
+
         employeeService = new EmployeeServiceImpl();
+
         assertEquals(0, employeeService.getAll().size());
+
     }
 
     @Test
     void add() {
+
         employeeService.add(EMP);
 
         assertEquals(1, employeeService.getAll().size());
+
         assertEquals(EMP, employeeService.getAll().get(0));
+
     }
 
     @Test
     void remove() {
+
         employeeService.add(EMP);
         employeeService.add(EMP1);
 
@@ -41,25 +48,31 @@ class EmployeeServiceImplTest {
         employeeService.remove(EMP.getFirstName(), EMP.getLastName());
 
         assertEquals(1, employeeService.getAll().size());
+
     }
 
     @Test
     void find() {
+
         employeeService.add(EMP);
 
         assertEquals(EMP, employeeService.find(EMP.getFirstName(), EMP.getLastName()));
+
     }
 
     @Test
     void getAll() {
+
         employeeService.add(EMP);
         employeeService.add(EMP1);
 
         assertEquals(2, employeeService.getAll().size());
+
     }
 
     @Test
     void TestEmployeeAlreadyAddedException() {
+
         employeeService.add(EMP);
 
         EmployeeAlreadyAddedException e = assertThrows(
@@ -73,6 +86,7 @@ class EmployeeServiceImplTest {
 
     @Test
     void TestEmployeeNameIncorrectException() {
+
         employeeService.add(EMP);
 
         EmployeeNameIncorrectException e = assertThrows(
@@ -112,6 +126,7 @@ class EmployeeServiceImplTest {
         );
 
         assertEquals(e.getMessage(), "The list size is exceeded!!!");
+
     }
 
 }

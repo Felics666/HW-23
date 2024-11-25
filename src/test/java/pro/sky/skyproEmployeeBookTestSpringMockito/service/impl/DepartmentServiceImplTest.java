@@ -65,6 +65,7 @@ class DepartmentServiceImplTest {
         List<Employee> employees = departmentService.findByDepartment(2);
 
         assertEquals(2, employees.size());
+
         assertTrue(employees.containsAll(Arrays.asList(EMP2, EMP3)));
     }
 
